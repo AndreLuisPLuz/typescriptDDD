@@ -1,5 +1,5 @@
 interface ICommand {
-    id: string;
+    commandId: string;
 }
 
 export default ICommand;

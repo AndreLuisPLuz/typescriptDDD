@@ -3,9 +3,8 @@ class Entity {
 
     public get id() { return this._id };
 
-    constructor(id: string)
-    {
-        this._id = id
+    constructor(id: string) {
+        this._id = id;
     }
 }
 
