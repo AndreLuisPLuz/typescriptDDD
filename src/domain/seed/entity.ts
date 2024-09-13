@@ -1,7 +1,5 @@
 class Entity {
-    private _id: string;
-
-    public get id() { return this._id };
+    public _id: string;
 
     constructor(id: string) {
         this._id = id;

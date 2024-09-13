@@ -1,8 +1,9 @@
 import { injected } from "brandi";
-import IMemberRepository from "../../domain/aggregates/member/contracts/memberRepository";
 import { GetMemberDetails } from "../queries/getMemberDetails";
+import { INFRA_TOKENS } from "../../infrastructure/container";
+
+import IMemberRepository from "../../domain/aggregates/member/contracts/memberRepository";
 import IQueryHandler from "../seed/queryHandler";
-import { TOKENS } from "../seed/container";
 
 class MemberQueryHandler implements IQueryHandler<GetMemberDetails> {
     private repo: IMemberRepository;
@@ -17,6 +18,6 @@ class MemberQueryHandler implements IQueryHandler<GetMemberDetails> {
     }
 }
 
-injected(MemberQueryHandler, TOKENS.memberRepository);
+injected(MemberQueryHandler, INFRA_TOKENS.memberRepository);
 
 export default MemberQueryHandler;

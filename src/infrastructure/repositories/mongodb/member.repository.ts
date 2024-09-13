@@ -20,11 +20,11 @@ class MongoMemberRepository implements IMemberRepository {
     }
 
     async upsertAsync(entity: Member): Promise<Member | null> {
-        const entityExists = (await MemberModel.exists({ _id: entity.id }) != null);
+        const entityExists = (await MemberModel.exists({ _id: entity._id }) != null);
 
         const document = entityExists
-            ? await MemberModel.findOneAndUpdate({ _id: entity.id }, entity).exec()
-            : (await MemberModel.create())[0];
+            ? await MemberModel.findOneAndUpdate({ _id: entity._id }, entity).exec()
+            : await MemberModel.create(entity);
         
         if (document == null)
             return null;

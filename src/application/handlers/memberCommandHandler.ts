@@ -1,10 +1,10 @@
 import { injected } from "brandi";
-import { TOKENS } from "../seed/container";
 
 import IMemberRepository from "../../domain/aggregates/member/contracts/memberRepository";
 import ICommandHandler from "../seed/commandHandler";
 import CreateMember from "../commands/createMember";
 import Member from "../../domain/aggregates/member/member";
+import { INFRA_TOKENS } from "../../infrastructure/container";
 
 class MemberCommandHandler implements ICommandHandler<CreateMember> {
     private repo: IMemberRepository;
@@ -27,10 +27,10 @@ class MemberCommandHandler implements ICommandHandler<CreateMember> {
             return;
         }
 
-        command.result = savedMember.id;
+        command.result = savedMember._id;
     }
 }
 
-injected(MemberCommandHandler, TOKENS.memberRepository);
+injected(MemberCommandHandler, INFRA_TOKENS.memberRepository);
 
 export default MemberCommandHandler;

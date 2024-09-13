@@ -4,7 +4,7 @@
   "description": "Trying to figure out a decent structure for working with the god-forsaken mess that Mongoose TS is",
   "main": "src/server.ts",
   "scripts": {
-    "dev": "npx ts-node src/server.ts"
+    "dev": "npx ts-node src/presentation/server.ts"
   },
   "author": "Andre Luis Pereira da Luz",
   "license": "ISC",

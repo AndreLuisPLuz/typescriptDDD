@@ -3,6 +3,6 @@ import { createMemberController } from "../controllers/member.controller";
 
 const memberRouter = Router();
 
-memberRouter.post("/member", createMemberController);
+memberRouter.post("", createMemberController);
 
 export default memberRouter;

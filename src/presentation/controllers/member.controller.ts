@@ -1,10 +1,11 @@
-import { Request, Response } from "express";
-import { container, TOKENS } from "../seed/container";
-import { GetMemberDetails } from "../../application/queries/getMemberDetails";
 import CreateMember from "../../application/commands/createMember";
 
-const commandHandler = container.get(TOKENS.memberCommandHandler);
-const queryHandler = container.get(TOKENS.memberQueryHandler);
+import { Request, Response } from "express";
+import { GetMemberDetails } from "../../application/queries/getMemberDetails";
+import { APP_TOKENS, applicationContainer } from "../../application/container";
+
+const commandHandler = applicationContainer.get(APP_TOKENS.memberCommandHandler);
+const queryHandler = applicationContainer.get(APP_TOKENS.memberQueryHandler);
 
 const createMemberController = async (req: Request, res: Response): Promise<Response> => {
     const { fullname, email, phone } = req.body;
