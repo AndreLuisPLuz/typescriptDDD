@@ -21,6 +21,13 @@ class Member extends Entity {
 
         return entity;
     };
+
+    public static loadEntity = (id: string, fullname: string, email: string, phone?: string): Member => {
+        const entity = new Member(id, fullname, email);
+        entity.phone = phone;
+
+        return entity;
+    };
 }
 
 export default Member;

@@ -34,11 +34,12 @@ class MongoMemberRepository implements IMemberRepository {
     }
 
     private loadFromDocument(document: HydratedDocument<IMember>): Member {
-        return new Member(
+        return Member.loadEntity(
             document._id.toString(),
             document.fullname,
-            document.email
-        );
+            document.email,
+            document.phone
+        )
     };
 }
 

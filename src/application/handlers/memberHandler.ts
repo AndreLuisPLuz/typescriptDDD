@@ -1,8 +1,9 @@
 import { injected } from "brandi";
-import IMemberRepository from "../../domain/aggregates/member/contracts/memberRepository";
-import CreateMember from "../commands/createMember";
-import ICommandHandler from "../seed/commandHandler";
 import { TOKENS } from "../seed/container";
+
+import IMemberRepository from "../../domain/aggregates/member/contracts/memberRepository";
+import ICommandHandler from "../seed/commandHandler";
+import CreateMember from "../commands/createMember";
 import Member from "../../domain/aggregates/member/member";
 
 class MemberHandler implements ICommandHandler<CreateMember> {
@@ -12,14 +13,21 @@ class MemberHandler implements ICommandHandler<CreateMember> {
         this.repo = repo;
     }
 
-    handle(command: CreateMember): void {
+    async handleAsync(command: CreateMember): Promise<void> {
         const newMember = Member.createEntity(
             command.fullname,
             command.email,
             command.phone
         );
 
-        this.repo.upsertAsync(newMember);
+        const savedMember = await this.repo.upsertAsync(newMember);
+        
+        if (savedMember == null) {
+            command.result = null;
+            return;
+        }
+
+        command.result = savedMember.id;
     }
 }
 
