@@ -7,7 +7,7 @@ type MemberDetails = {
     phone?: string;
 }
 
-class getMemberDetails implements IQuery<MemberDetails> {
+class GetMemberDetails implements IQuery<MemberDetails> {
     queryId: string;
     memberid: string;
     result: MemberDetails | null = null;
@@ -18,4 +18,4 @@ class getMemberDetails implements IQuery<MemberDetails> {
     }
 }
 
-export { MemberDetails, getMemberDetails }
+export { MemberDetails, GetMemberDetails }
