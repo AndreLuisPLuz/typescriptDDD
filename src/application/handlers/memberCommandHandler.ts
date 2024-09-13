@@ -6,7 +6,7 @@ import ICommandHandler from "../seed/commandHandler";
 import CreateMember from "../commands/createMember";
 import Member from "../../domain/aggregates/member/member";
 
-class MemberHandler implements ICommandHandler<CreateMember> {
+class MemberCommandHandler implements ICommandHandler<CreateMember> {
     private repo: IMemberRepository;
 
     constructor(repo: IMemberRepository) {
@@ -31,6 +31,6 @@ class MemberHandler implements ICommandHandler<CreateMember> {
     }
 }
 
-injected(MemberHandler, TOKENS.memberRepository);
+injected(MemberCommandHandler, TOKENS.memberRepository);
 
-export default MemberHandler;
+export default MemberCommandHandler;
